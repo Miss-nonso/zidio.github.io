@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-blue-100;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+    filter: drop-shadow(0.1em 0 0.1em #c24595);
+    /* filter: drop-shadow(0 0 1em 0 #c24595); */
+  }
+  to {
+    transform: rotateY(360deg);
+    /* filter: drop-shadow(50em 5em 5em purple); */
+    filter: drop-shadow(12em 0 0 #c24595);
+  }
+}
+
+@keyframes beep {
+  from {
+    color: #c24595;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  to {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+
+.beep {
+  animation: beep 2s infinite ease-in-out;
+}
+
+.rotate {
+  animation: rotate 3000ms infinite ease-in-out;
+}
