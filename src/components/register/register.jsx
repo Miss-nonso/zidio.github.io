@@ -25,7 +25,7 @@ const Register = () => {
       Invalid entry
     </small>
   );
-  console.log(allUsers);
+
   const HandleSubmit = (first_name, last_name, email, userPassword) => {
     const hashedPassword = bcrypt.hashSync(userPassword, salt);
     // const hashedEmail = bcrypt.hashSync(email, salt);
@@ -78,27 +78,6 @@ const Register = () => {
             setPassword("") &
             setConfirmPassword("")) &
           setIsRegistered(true);
-
-    // setAllUsers([...storedUsers]);
-
-    // findUser
-    //   ? setIsExisting(true)
-    //   : password === confirmPassword &&
-    //     setAllUsers([
-    //       ...allUsers,
-    //       {
-    //         first_name: first_name,
-    //         last_name: last_name,
-    //         email: email,
-    //         password: userPassword
-    //       }
-    //     ]) &
-    //       (setFirstname("") &
-    //         setLastname("") &
-    //         setEmail("") &
-    //         setPassword("") &
-    //         setConfirmPassword("")) &
-    //       setIsRegistered(true);
   };
 
   return (

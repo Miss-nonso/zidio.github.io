@@ -20,12 +20,6 @@ const Login = () => {
         ? storedUsers.find((user) => user.email === email)
         : setIsExisting(false);
 
-    // findUser
-    //   ? retrivedPwd = bcrypt
-    //       .compare(password, findUser.password)
-    //       .then((response) => ( response))
-    //   : setIsExisting(false) & setIsMatched(false);
-
     findUser
       ? bcrypt
           .compare(password, findUser.password)
@@ -39,32 +33,7 @@ const Login = () => {
                 setIsMatched(false) & setIsExisting(true)
           )
       : setIsExisting(false) & setIsMatched(false);
-
-    console.log(retrivedPwd);
-
-    // findUser
-    //   ? retrivedPwd === true
-    //     ? setIsExisting(true) &
-    //       setIsMatched(true) &
-    //       setUserEmail("") &
-    //       setPassword("")
-    //     : findUser.email === email && setIsMatched(false) & setIsExisting(true)
-    //   : setIsExisting(false);
-
-    // findUser
-    //   ? findUser.password === password && findUser.email === email
-    //     ? setIsExisting(true) &
-    //       setIsMatched(true) &
-    //       setUserEmail("") &
-    //       setPassword("")
-    //     : findUser.password !== password &&
-    //       findUser.email === email &&
-    //       setIsMatched(false) & setIsExisting(true)
-    //   : setIsExisting(false);
   };
-
-  console.log("isExisting :" + isExisting);
-  console.log("isMatched :" + isMatched);
 
   return (
     <section
@@ -175,7 +144,6 @@ const Login = () => {
           </form>
 
           <div className="hidden md:flex md:items-end md:h-4/6 md:pl-[5rem]">
-            {/* <img src={laptop} alt="Laptop icon" /> */}
             <img
               src={purpleLocationIcon22}
               alt="Location icon"
@@ -183,11 +151,6 @@ const Login = () => {
             />
           </div>
         </div>
-
-        {/* <div className="h-1/4  relative -mt-[4rem] -ml-[9rem] hidden md:flex">
-          <img src={darkElem} className="backdrop-hue-rotate-180" />
-          <img src={lighterElem} className="absolute top-2" />
-        </div> */}
       </div>
     </section>
   );

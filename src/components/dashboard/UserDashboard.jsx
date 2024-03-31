@@ -19,8 +19,6 @@ const App = () => {
   const [apiStatus, setApiStatus] = useState(200);
   const [locationToDisp, setLocationToDisp] = useState([]);
 
-  console.log("env loggggg", import.meta.env.VITE_GOOGLEMAPS_API_KEY);
-
   useEffect(() => {
     navigator.geolocation.watchPosition((showPosition) => {
       let lat = showPosition.coords.latitude;
@@ -34,49 +32,12 @@ const App = () => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log("result", typeof result.status.code);
           setApiComponent(result.results[0].components);
           setApiStatus(result.status.code);
-          console.log("apistatus", apiStatus);
         })
         .catch((err) => {
-          // window.alert("Something went wrong. " + err.message);
-          console.log("errmsg", err.message);
+          console.log("Something went wrong. " + err.message);
         });
-
-    console.log("api component", apiComponent.road);
-    console.log("all users", allUserLocation);
-
-    // !allUserLocation
-    //   ? apiComponent.road &
-    //     setAllUserLocation([
-    //       ...allUserLocation,
-    //       {
-    //         houseNumber: apiComponent.house_number
-    //           ? apiComponent.house_number
-    //           : "",
-    //         continent: apiComponent.continent,
-    //         road: apiComponent.road ? apiComponent.road : "",
-    //         road_type: apiComponent.road_type ? apiComponent.road_type : "",
-    //         country: apiComponent.country,
-    //         state: apiComponent.state
-    //       }
-    //     ])
-    //   : apiComponent.road &&
-    //     allUserLocation[allUserLocation.length - 1].road &&
-    //     setAllUserLocation([
-    //       ...allUserLocation,
-    //       {
-    //         houseNumber: apiComponent.house_number
-    //           ? apiComponent.house_number
-    //           : "",
-    //         continent: apiComponent.continent,
-    //         road: apiComponent.road ? apiComponent.road : "",
-    //         road_type: apiComponent.road_type ? apiComponent.road_type : "",
-    //         country: apiComponent.country,
-    //         state: apiComponent.state
-    //       }
-    //     ]);
 
     !allUserLocation & apiComponent.road
       ? setAllUserLocation([
@@ -108,38 +69,6 @@ const App = () => {
             state: apiComponent.state
           }
         ]);
-
-    // if (allUserLocation.length > 0) {
-    //   if (apiComponent.road != allUserLocation[0].road) {
-    //     setAllUserLocation([
-    //       ...allUserLocation,
-    //       {
-    //         houseNumber: apiComponent.house_number
-    //           ? apiComponent.house_number
-    //           : "",
-    //         continent: apiComponent.continent,
-    //         road: apiComponent.road ? apiComponent.road : "",
-    //         road_type: apiComponent.road_type ? apiComponent.road_type : "",
-    //         country: apiComponent.country,
-    //         state: apiComponent.state
-    //       }
-    //     ]);
-    //   }
-    // } else {
-    //   setAllUserLocation([
-    //     ...allUserLocation,
-    //     {
-    //       houseNumber: apiComponent.house_number
-    //         ? apiComponent.house_number
-    //         : "",
-    //       continent: apiComponent.continent,
-    //       road: apiComponent.road ? apiComponent.road : "",
-    //       road_type: apiComponent.road_type ? apiComponent.road_type : "",
-    //       country: apiComponent.country,
-    //       state: apiComponent.state
-    //     }
-    //   ]);
-    // }
   }, [userLocation, apiComponent]);
 
   const { isLoaded, loadError } = useLoadScript({
