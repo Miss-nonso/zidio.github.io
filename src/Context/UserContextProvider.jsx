@@ -3,7 +3,7 @@ import UserContext from "./UserContext";
 
 const UserContextProvider = ({ children }) => {
   const [allUsers, setAllUsers] = useState(
-    JSON.parse(localStorage.getItem("allUsers"))
+    JSON.parse(localStorage.getItem("allUsers")) || []
   );
   return (
     <UserContext.Provider value={{ allUsers, setAllUsers }}>

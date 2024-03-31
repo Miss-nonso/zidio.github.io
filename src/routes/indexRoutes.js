@@ -1,4 +1,3 @@
-import Dashboard from "../components/dashboard/dashboard";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
 import LandingPage from "../components/LandingPage/LandingPage";
