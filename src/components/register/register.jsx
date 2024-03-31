@@ -236,7 +236,7 @@ const Register = () => {
                 User Registered Successfully ✅
                 <Link
                   to={"/login"}
-                  className="beep text-base block mt-4 font-normal border bg-borderPurple border-borderPurple px-5 py-2 rounded-xl md:inline md:mt-0"
+                  className="beep text-base block mt-4 font-normal border bg-borderPurple border-borderPurple px-1 py-2 rounded-xl md:inline md:mt-0"
                 >
                   Login ...
                 </Link>
