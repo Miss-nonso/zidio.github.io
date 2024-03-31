@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div className="flex flex-col h-screen bg-blue-100 p-3 items-center gap-3">
-      <div className="h-full">
+      <div className="h-2/5 ">
         <img
           src={purpleLocationIcon22}
           alt="Location icon"
           className="rotate h-full w-full"
         />
       </div>
-      <h1 className="text-center border border-borderPurple  py-10  px-7 font-semibold text-[1.5rem] leading-5 rounded-2xl md:w-1/2">
+      <h1 className="text-center border border-borderPurple py-10 px-7 font-semibold text-[1.5rem] leading-5 rounded-2xl md:w-1/2 md:h-2/5">
         <p className="text-1.1rem pb-4 text-purple-950 md:text-[2rem]">
           Welcome to
         </p>
@@ -25,7 +25,7 @@ const LandingPage = () => {
         </span>
       </h1>
 
-      <div className="flex gap-7 h-1/4 md:flex-col md:gap-4 md:w-1/4">
+      <div className="flex gap-7 md:h-1/4 md:flex-col md:gap-4 md:w-1/4">
         <Link to={"/register"} className="hover:border-borderPurple">
           <button className="bg-darkPink py-3 px-4 text-offWhite text-[1.05rem] rounded-xl transition-all duration-300 ease-in-out hover:opacity-95 hover:py-4 hover:text-offWhite hover:text-[1.1rem] focus:outline-borderPurple md:rounded-3xl md:w-full md:text-purple-950">
             Register
@@ -33,7 +33,6 @@ const LandingPage = () => {
         </Link>
         <Link to={"/login"}>
           <button className="bg-darkPink py-3 px-4 text-offWhite text-[1.05rem]  rounded-xl transition-all duration-300 ease-in-out hover:opacity-95 hover:py-4 hover:text-offWhite hover:text-[1.1rem] focus:outline-borderPurple md:rounded-3xl md:w-full md:text-purple-950">
-            {" "}
             Log in
           </button>
         </Link>

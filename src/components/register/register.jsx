@@ -25,13 +25,28 @@ const Register = () => {
       Invalid entry
     </small>
   );
-
+  console.log(allUsers);
   const HandleSubmit = (first_name, last_name, email, userPassword) => {
     const hashedPassword = bcrypt.hashSync(userPassword, salt);
     // const hashedEmail = bcrypt.hashSync(email, salt);
 
     const findUser =
-      allUsers.length >= 1 && allUsers.find((user) => user.email === email);
+      allUsers.length >= 1
+        ? allUsers.find((user) => user.email === email)
+        : localStorage.setItem(
+            "allUsers",
+            JSON.stringify(
+              setAllUsers([
+                ...allUsers,
+                {
+                  first_name: first_name,
+                  last_name: last_name,
+                  email: email,
+                  password: hashedPassword
+                }
+              ])
+            )
+          );
 
     findUser
       ? setIsExisting(true)
@@ -239,10 +254,10 @@ const Register = () => {
               </p>
             ) : isRegistered ? (
               <p className="text-center text-darkPink font-bold text-[1.05rem]">
-                User Registered Successfully ✅{" "}
+                User Registered Successfully ✅
                 <Link
                   to={"/login"}
-                  className="beep text-base font-normal border bg-borderPurple border-borderPurple px-5 py-2 rounded-xl"
+                  className="beep text-base block mt-4 font-normal border bg-borderPurple border-borderPurple px-5 py-2 rounded-xl md:inline md:mt-0"
                 >
                   Login ...
                 </Link>

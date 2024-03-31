@@ -143,13 +143,13 @@ const Login = () => {
                     "You have provided an incorrect password"
                   ) : isExisting && isMatched ? (
                     <p>
-                      <span className="inline-block pr-10">
+                      <span className="inline-block pr-10 pb-4 md:pb-0">
                         {" "}
                         Login succcessful ✅
                       </span>
                       <Link
                         to={"/dashboard"}
-                        className="beep pl-10 text-base font-normal border bg-borderPurple border-borderPurple px-5 py-2 rounded-xl"
+                        className="beep pl-10 text-base block font-normal border bg-borderPurple border-borderPurple px-5 py-2 rounded-xl md:inline"
                       >
                         Go to dashboard ...
                       </Link>

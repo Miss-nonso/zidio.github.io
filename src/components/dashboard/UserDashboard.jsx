@@ -1,8 +1,11 @@
 import React from "react";
+
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { AdvancedMarker } from "@vis.gl/react-google-maps";
 import purpleLocationIcon22 from "../../assets/images/purpleLocationIcon22.png";
 import { useState, useEffect } from "react";
+const openCageApi = import.meta.env.VITE_OPENCAGE_API_KEY;
+const googleMapApi = import.meta.env.VITE_GOOGLEMAPS_API_KEY;
 
 const mapContainerStyle = {
   width: "100%",
@@ -10,14 +13,13 @@ const mapContainerStyle = {
 };
 
 const App = () => {
-  const OPENCAGE_API_KEY = "a69f7b072b0d4577a44c0a32db17a4ac";
-  let GOOGLEMAPS_API_KEY = "AIzaSyCof3M6gKBxkIQVHnzlm9bApWP1qtklqns";
-
   const [userLocation, setUserLocation] = useState({});
   const [apiComponent, setApiComponent] = useState({});
   const [allUserLocation, setAllUserLocation] = useState([]);
   const [apiStatus, setApiStatus] = useState(200);
   const [locationToDisp, setLocationToDisp] = useState([]);
+
+  console.log("env loggggg", import.meta.env.VITE_GOOGLEMAPS_API_KEY);
 
   useEffect(() => {
     navigator.geolocation.watchPosition((showPosition) => {
@@ -28,7 +30,7 @@ const App = () => {
 
     userLocation.lat & userLocation.lng &&
       fetch(
-        `https://api.opencagedata.com/geocode/v1/json?key=${OPENCAGE_API_KEY}&q=${userLocation.lat}+${userLocation.lng}&pretty=1&no_annotations=1`
+        `https://api.opencagedata.com/geocode/v1/json?key=${openCageApi}&q=${userLocation.lat}+${userLocation.lng}&pretty=1&no_annotations=1`
       )
         .then((response) => response.json())
         .then((result) => {
@@ -41,21 +43,6 @@ const App = () => {
           // window.alert("Something went wrong. " + err.message);
           console.log("errmsg", err.message);
         });
-
-    // apiComponent.road &&
-    //   setAllUserLocation([
-    //     ...allUserLocation,
-    //     {
-    //       houseNumber: apiComponent.house_number
-    //         ? apiComponent.house_number
-    //         : "",
-    //       continent: apiComponent.continent,
-    //       road: apiComponent.road ? apiComponent.road : "",
-    //       road_type: apiComponent.road_type ? apiComponent.road_type : "",
-    //       country: apiComponent.country,
-    //       state: apiComponent.state
-    //     }
-    //   ]);
 
     console.log("api component", apiComponent.road);
     console.log("all users", allUserLocation);
@@ -156,7 +143,7 @@ const App = () => {
   }, [userLocation, apiComponent]);
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: GOOGLEMAPS_API_KEY
+    googleMapsApiKey: "AIzaSyCof3M6gKBxkIQVHnzlm9bApWP1qtklqns"
   });
 
   if (loadError) {
@@ -177,9 +164,7 @@ const App = () => {
         />
         <p className="text-4xl font-bold text-darkPink"> ZIDIO</p>
       </h1>
-      {/* <h1 className="text-4xl pl-12 p-4 font-bold text-darkPink py-4 ">
-        ZIDIO
-      </h1> */}
+
       <div className="md:flex md:flex-row flex flex-col gap-2 p-4 pt-0 md:gap-1 md:pb-12 md:pr-0">
         {" "}
         <div className="md:w-[70vw] md:h-[83vh] h-[80dvh] w-full">
